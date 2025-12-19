@@ -1,7 +1,7 @@
 package com.example.demo.service.impl;
 
-import com.example.demo.entity.Visitor;
-import com.example.demo.exceptionhandler.ResourceNotFoundException;
+import com.example.demo.entity.VisitorEntity;
+import com.example.demo.exception.ResourceNotFoundException;
 import com.example.demo.service.VisitorService;
 import com.example.demo.repository.VisitorRepository;
 
