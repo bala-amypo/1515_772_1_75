@@ -2,7 +2,7 @@ package com.example.demo.entity;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
-
+import com.example.demo.entity.VisitorEntity;
 import java.time.LocalDateTime;
 
 @Entity
@@ -15,7 +15,7 @@ public class VisitLogEntity {
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "visitor_id")
-    private Visitor visitor;
+    private VisitorEntity visitor;
 
     @Column(nullable = false)
     private LocalDateTime entryTime;
@@ -50,7 +50,7 @@ public class VisitLogEntity {
         return id;
     }
 
-    public Visitor getVisitor() {
+    public VisitorEntity getVisitor() {
         return visitor;
     }
 

@@ -3,7 +3,8 @@ package com.example.demo.entity;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.PositiveOrZero;
-
+import com.example.demo.entity.VisitorEntity;
+import com.example.demo.entity.RiskRuleEntity;
 import java.time.LocalDateTime;
 
 @Entity
@@ -16,7 +17,7 @@ public class ScoreAuditLogEntity {
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "visitor_id")
-    private Visitor visitor;
+    private VisitorEntity visitor;
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "risk_rule_id")
@@ -42,7 +43,7 @@ public class ScoreAuditLogEntity {
     public ScoreAuditLogEntity() {
     }
 
-    public ScoreAuditLogEntity(Visitor visitor, RiskRule appliedRule, Integer scoreChange, String reason) {
+    public ScoreAuditLogEntity(VisitorEntity visitor, RiskRuleEntity appliedRule, Integer scoreChange, String reason) {
         this.visitor = visitor;
         this.appliedRule = appliedRule;
         this.scoreChange = scoreChange;
@@ -58,15 +59,15 @@ public class ScoreAuditLogEntity {
         return visitor;
     }
 
-    public void setVisitor(Visitor visitor) {
+    public void setVisitor(VisitorEntity visitor) {
         this.visitor = visitor;
     }
 
-    public RiskRule getAppliedRule() {
+    public RiskRuleEntity getAppliedRule() {
         return appliedRule;
     }
 
-    public void setAppliedRule(RiskRule appliedRule) {
+    public void setAppliedRule(RiskRuleEntity appliedRule) {
         this.appliedRule = appliedRule;
     }
 
