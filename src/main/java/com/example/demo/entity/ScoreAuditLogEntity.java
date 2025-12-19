@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "score_audit_log")
-public class ScoreAuditLog {
+public class ScoreAuditLogEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -39,10 +39,10 @@ public class ScoreAuditLog {
     }
 
     // Constructors
-    public ScoreAuditLog() {
+    public ScoreAuditLogEntity() {
     }
 
-    public ScoreAuditLog(Visitor visitor, RiskRule appliedRule, Integer scoreChange, String reason) {
+    public ScoreAuditLogEntity(Visitor visitor, RiskRule appliedRule, Integer scoreChange, String reason) {
         this.visitor = visitor;
         this.appliedRule = appliedRule;
         this.scoreChange = scoreChange;
