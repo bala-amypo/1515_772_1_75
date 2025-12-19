@@ -31,7 +31,7 @@ public class UserServiceImpl implements UserService {
 
         UserEntity user = new UserEntity();
         user.setEmail(request.getEmail());
-        user.setPassword(passwordEncoder.encode(request.getPassword()));
+       user.setPassword(request.getPassword());
         user.setRoles(Set.of("USER"));
 
         return userRepository.save(user);
@@ -43,11 +43,11 @@ public class UserServiceImpl implements UserService {
         UserEntity user = userRepository.findByEmail(request.getEmail())
                 .orElseThrow(() -> new RuntimeException("Invalid email"));
 
-        if (!passwordEncoder.matches(
-                request.getPassword(),
-                user.getPassword())) {
-            throw new RuntimeException("Invalid password");
+        if (!request.getPassword().equals(user.getPassword()))
+        {
+                 throw new RuntimeException("Invalid password");
         }
+
 
         // JWT placeholder
         String token = "JWT_TOKEN";
