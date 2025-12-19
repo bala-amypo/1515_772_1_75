@@ -7,7 +7,6 @@ import com.example.demo.repository.RiskScoreRepository;
 import com.example.demo.repository.VisitorRepository;
 import com.example.demo.service.RiskScoreService;
 
-
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -30,11 +29,13 @@ public class RiskScoreServiceImpl implements RiskScoreService {
         VisitorEntity visitor = visitorRepository.findById(visitorId)
                 .orElseThrow(() -> new ResourceNotFoundException("Visitor not found"));
 
-        
+        // ✅ TEMP SCORE (no utils, no visitor score)
+        int totalScore = 0;
+        String riskLevel = "LOW";
 
         RiskScoreEntity riskScore = riskScoreRepository
                 .findByVisitorId(visitorId)
-                .orElse(new RiskScore());
+                .orElse(new RiskScoreEntity());
 
         riskScore.setVisitor(visitor);
         riskScore.setTotalScore(totalScore);
