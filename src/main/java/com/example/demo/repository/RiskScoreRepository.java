@@ -7,6 +7,6 @@ import java.util.Optional;
 
 public interface RiskScoreRepository extends JpaRepository<RiskScoreEntity, Long> {
 
-    Optional<RiskScore> findByVisitorId(Long visitorId);
+    Optional<RiskScoreEntity> findByVisitorId(Long visitorId);
 }
     

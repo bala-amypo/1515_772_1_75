@@ -6,7 +6,7 @@ import com.example.demo.exception.ResourceNotFoundException;
 import com.example.demo.repository.RiskScoreRepository;
 import com.example.demo.repository.VisitorRepository;
 import com.example.demo.service.RiskScoreService;
-import com.example.demo.util.RiskLevelUtils;
+
 
 import org.springframework.stereotype.Service;
 

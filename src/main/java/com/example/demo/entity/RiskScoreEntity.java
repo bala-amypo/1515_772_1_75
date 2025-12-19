@@ -35,7 +35,7 @@ public class RiskScoreEntity {
 
     public RiskScoreEntity() {}
 
-    public RiskScoreEntity(Visitor visitor, Integer totalScore, String riskLevel) {
+    public RiskScoreEntity(VisitorEntity visitor, Integer totalScore, String riskLevel) {
         this.visitor = visitor;
         this.totalScore = totalScore;
         this.riskLevel = riskLevel;
