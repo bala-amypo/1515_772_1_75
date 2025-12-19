@@ -26,7 +26,7 @@ public class VisitLogServiceImpl implements VisitLogService {
     @Override
     public VisitLogEntity createVisitLog(Long visitorId, VisitLogEntity log) {
 
-        Visitor visitor = visitorRepository.findById(visitorId)
+        VisitorEntity visitor = visitorRepository.findById(visitorId)
                 .orElseThrow(() -> new ResourceNotFoundException("Visitor not found"));
 
         log.setVisitor(visitor);
