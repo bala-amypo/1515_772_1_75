@@ -20,19 +20,19 @@ public class RiskScoreController {
 
     // POST /api/risk-scores/evaluate/{visitorId}
     @PostMapping("/evaluate/{visitorId}")
-    public ResponseEntity<RiskScore> evaluateVisitor(@PathVariable Long visitorId) {
+    public ResponseEntity<RiskScoreEntity> evaluateVisitor(@PathVariable Long visitorId) {
         return ResponseEntity.ok(riskScoreService.evaluateVisitor(visitorId));
     }
 
     // GET /api/risk-scores/{visitorId}
     @GetMapping("/{visitorId}")
-    public ResponseEntity<RiskScore> getScoreForVisitor(@PathVariable Long visitorId) {
+    public ResponseEntity<RiskScoreEntity> getScoreForVisitor(@PathVariable Long visitorId) {
         return ResponseEntity.ok(riskScoreService.getScoreForVisitor(visitorId));
     }
 
     // GET /api/risk-scores
     @GetMapping
-    public ResponseEntity<List<RiskScore>> getAllScores() {
+    public ResponseEntity<List<RiskScoreEntity>> getAllScores() {
         return ResponseEntity.ok(riskScoreService.getAllScores());
     }
 }

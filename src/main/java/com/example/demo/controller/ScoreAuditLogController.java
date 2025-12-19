@@ -21,12 +21,12 @@ public class ScoreAuditLogController {
 
     // POST /api/score-logs/{visitorId}/{ruleId}
     @PostMapping("/{visitorId}/{ruleId}")
-    public ResponseEntity<ScoreAuditLog> createAuditLog(
+    public ResponseEntity<ScoreAuditLogEntity> createAuditLog(
             @PathVariable Long visitorId,
             @PathVariable Long ruleId,
-            @RequestBody ScoreAuditLog log) {
+            @RequestBody ScoreAuditLogEntity log) {
 
-        ScoreAuditLog savedLog =
+        ScoreAuditLogEntity savedLog =
                 scoreAuditLogService.logScoreChange(visitorId, ruleId, log);
 
         return new ResponseEntity<>(savedLog, HttpStatus.CREATED);
@@ -34,10 +34,10 @@ public class ScoreAuditLogController {
 
     // GET /api/score-logs/visitor/{visitorId}
     @GetMapping("/visitor/{visitorId}")
-    public ResponseEntity<List<ScoreAuditLog>> getLogsByVisitor(
+    public ResponseEntity<List<ScoreAuditLogEntity>> getLogsByVisitor(
             @PathVariable Long visitorId) {
 
-        List<ScoreAuditLog> logs =
+        List<ScoreAuditLogEntity> logs =
                 scoreAuditLogService.getLogsByVisitor(visitorId);
 
         return ResponseEntity.ok(logs);
@@ -45,7 +45,7 @@ public class ScoreAuditLogController {
 
     // GET /api/score-logs/{id}
     @GetMapping("/{id}")
-    public ResponseEntity<ScoreAuditLog> getLogById(@PathVariable Long id) {
+    public ResponseEntity<ScoreAuditLogEntity> getLogById(@PathVariable Long id) {
 
         ScoreAuditLog log = scoreAuditLogService.getLog(id);
 
