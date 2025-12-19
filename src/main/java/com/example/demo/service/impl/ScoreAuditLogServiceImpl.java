@@ -30,12 +30,12 @@ public class ScoreAuditLogServiceImpl implements ScoreAuditLogService {
     }
 
     @Override
-    public ScoreAuditLog logScoreChange(Long visitorId, Long ruleId, ScoreAuditLog log) {
+    public ScoreAuditLogEntity logScoreChange(Long visitorId, Long ruleId, ScoreAuditLogEntity log) {
 
-        Visitor visitor = visitorRepository.findById(visitorId)
+        VisitorEntity visitor = visitorRepository.findById(visitorId)
                 .orElseThrow(() -> new ResourceNotFoundException("Visitor not found"));
 
-        RiskRule rule = riskRuleRepository.findById(ruleId)
+        RiskRuleEntity rule = riskRuleRepository.findById(ruleId)
                 .orElseThrow(() -> new ResourceNotFoundException("RiskRule not found"));
 
         log.setVisitor(visitor);
@@ -45,7 +45,7 @@ public class ScoreAuditLogServiceImpl implements ScoreAuditLogService {
     }
 
     @Override
-    public List<ScoreAuditLog> getLogsByVisitor(Long visitorId) {
+    public List<ScoreAuditLogEntity> getLogsByVisitor(Long visitorId) {
         return scoreAuditLogRepository.findAll()
                 .stream()
                 .filter(log -> log.getVisitor().getId().equals(visitorId))
@@ -53,7 +53,7 @@ public class ScoreAuditLogServiceImpl implements ScoreAuditLogService {
     }
 
     @Override
-    public ScoreAuditLog getLog(Long id) {
+    public ScoreAuditLogEntity getLog(Long id) {
         return scoreAuditLogRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("ScoreAuditLog not found"));
     }

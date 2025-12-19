@@ -19,7 +19,7 @@ public class VisitorServiceImpl implements VisitorService {
     }
 
     @Override
-    public Visitor createVisitor(Visitor visitor) {
+    public VisitorEntity createVisitor(VisitorEntity visitor) {
 
         if (visitor.getPhone() == null || visitor.getPhone().isBlank()) {
             throw new IllegalArgumentException("phone required");
@@ -29,13 +29,13 @@ public class VisitorServiceImpl implements VisitorService {
     }
 
     @Override
-    public Visitor getVisitor(Long id) {
+    public VisitorEntity getVisitor(Long id) {
         return visitorRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Visitor not found"));
     }
 
     @Override
-    public List<Visitor> getAllVisitors() {
+    public List<VisitorEntity> getAllVisitors() {
         return visitorRepository.findAll();
     }
 }

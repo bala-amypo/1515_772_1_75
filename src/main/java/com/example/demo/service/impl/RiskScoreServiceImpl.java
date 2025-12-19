@@ -25,15 +25,15 @@ public class RiskScoreServiceImpl implements RiskScoreService {
     }
 
     @Override
-    public RiskScore evaluateVisitor(Long visitorId) {
+    public RiskScoreEntity evaluateVisitor(Long visitorId) {
 
-        Visitor visitor = visitorRepository.findById(visitorId)
+        VisitorEntity visitor = visitorRepository.findById(visitorId)
                 .orElseThrow(() -> new ResourceNotFoundException("Visitor not found"));
 
         int totalScore = visitor.getTotalScore(); // assume calculated earlier
         String riskLevel = RiskLevelUtils.getRiskLevel(totalScore);
 
-        RiskScore riskScore = riskScoreRepository
+        RiskScoreEntity riskScore = riskScoreRepository
                 .findByVisitorId(visitorId)
                 .orElse(new RiskScore());
 
