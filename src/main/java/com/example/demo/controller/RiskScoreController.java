@@ -1,6 +1,6 @@
 package com.example.demo.controller;
 
-import com.example.demo.entity.RiskScore;
+import com.example.demo.entity.RiskScoreEntity;
 import com.example.demo.service.RiskScoreService;
 
 import org.springframework.http.ResponseEntity;

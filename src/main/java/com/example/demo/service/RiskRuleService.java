@@ -1,6 +1,6 @@
 package com.example.demo.service;
 
-import com.example.demo.entity.RiskRule;
+import com.example.demo.entity.RiskRuleEntity;
 import java.util.List;
 
 public interface RiskRuleService {

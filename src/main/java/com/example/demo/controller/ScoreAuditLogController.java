@@ -1,6 +1,6 @@
 package com.example.demo.controller;
 
-import com.example.demo.entity.ScoreAuditLog;
+import com.example.demo.entity.ScoreAuditLogEntity;
 import com.example.demo.service.ScoreAuditLogService;
 
 import org.springframework.http.HttpStatus;
