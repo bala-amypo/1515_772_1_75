@@ -54,7 +54,7 @@ public class VisitLogEntity {
         return visitor;
     }
 
-    public void setVisitor(Visitor visitor) {
+    public void setVisitor(VisitorEntity visitor) {
         this.visitor = visitor;
     }
 

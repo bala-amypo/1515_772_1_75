@@ -21,7 +21,7 @@ public class ScoreAuditLogEntity {
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "risk_rule_id")
-    private RiskRule appliedRule;
+    private RiskRuleEntity appliedRule;
 
     @PositiveOrZero(message = "scoreChange must be >= 0")
     @Column(nullable = false)
@@ -55,7 +55,7 @@ public class ScoreAuditLogEntity {
         return id;
     }
 
-    public Visitor getVisitor() {
+    public VisitorEntity getVisitor() {
         return visitor;
     }
 
