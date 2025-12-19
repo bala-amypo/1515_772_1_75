@@ -1,7 +1,7 @@
 package com.example.demo.service.impl;
 
 import com.example.demo.entity.ScoreAuditLogEntity;
-import com.example.demo.entity.VisitorEntiy;
+import com.example.demo.entity.VisitorEntity;
 import com.example.demo.entity.RiskRuleEntity;
 import com.example.demo.exception.ResourceNotFoundException;
 import com.example.demo.repository.ScoreAuditLogRepository;
