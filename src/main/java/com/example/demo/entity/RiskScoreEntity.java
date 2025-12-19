@@ -1,6 +1,7 @@
 package com.example.demo.entity;
 
 import jakarta.persistence.*;
+import com.example.demo.entity.VisitorEntity;
 import jakarta.validation.constraints.PositiveOrZero;
 
 import java.time.LocalDateTime;
@@ -15,7 +16,7 @@ public class RiskScoreEntity {
 
     @OneToOne(optional = false)
     @JoinColumn(name = "visitor_id")
-    private Visitor visitor;
+    private VisitorEntity visitor;
 
     @PositiveOrZero
     @Column(nullable = false)
@@ -45,11 +46,11 @@ public class RiskScoreEntity {
         return id;
     }
 
-    public Visitor getVisitor() {
+    public VisitorEntity getVisitor() {
         return visitor;
     }
 
-    public void setVisitor(Visitor visitor) {
+    public void setVisitor(VisitorEntity visitor) {
         this.visitor = visitor;
     }
 

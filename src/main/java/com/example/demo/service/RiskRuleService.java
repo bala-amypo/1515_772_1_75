@@ -5,9 +5,9 @@ import java.util.List;
 
 public interface RiskRuleService {
 
-    RiskRule createRule(RiskRule rule);
+    RiskRuleEntity createRule(RiskRuleEntity rule);
 
-    List<RiskRule> getAllRules();
+    List<RiskRuleEntity> getAllRules();
 
-    RiskRule getRule(Long id);
+    RiskRuleEntity getRule(Long id);
 }

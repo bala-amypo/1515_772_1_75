@@ -6,9 +6,9 @@ import java.util.List;
 
 public interface RiskScoreService {
 
-    RiskScore evaluateVisitor(Long visitorId);
+    RiskScoreEntity evaluateVisitor(Long visitorId);
 
-    RiskScore getScoreForVisitor(Long visitorId);
+    RiskScoreEntity getScoreForVisitor(Long visitorId);
 
     List<RiskScore> getAllScores();
 }
