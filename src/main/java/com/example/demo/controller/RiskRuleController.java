@@ -27,13 +27,13 @@ public class RiskRuleController {
 
     // GET /api/risk-rules
     @GetMapping
-    public ResponseEntity<List<RiskRule>> getAllRules() {
+    public ResponseEntity<List<RiskRuleEntity>> getAllRules() {
         return ResponseEntity.ok(riskRuleService.getAllRules());
     }
 
     // GET /api/risk-rules/{id}
     @GetMapping("/{id}")
-    public ResponseEntity<RiskRule> getRule(@PathVariable Long id) {
+    public ResponseEntity<RiskRuleEntity> getRule(@PathVariable Long id) {
         return ResponseEntity.ok(riskRuleService.getRule(id));
     }
 }
