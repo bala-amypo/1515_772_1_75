@@ -30,8 +30,7 @@ public class RiskScoreServiceImpl implements RiskScoreService {
         VisitorEntity visitor = visitorRepository.findById(visitorId)
                 .orElseThrow(() -> new ResourceNotFoundException("Visitor not found"));
 
-        int totalScore = visitor.getTotalScore(); // assume calculated earlier
-        String riskLevel = RiskLevelUtils.getRiskLevel(totalScore);
+        
 
         RiskScoreEntity riskScore = riskScoreRepository
                 .findByVisitorId(visitorId)
