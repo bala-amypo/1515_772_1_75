@@ -1,8 +1,8 @@
 package com.example.demo.service.impl;
 
-import com.example.demo.entity.RiskScore;
-import com.example.demo.entity.Visitor;
-import com.example.demo.exceptionhandler.ResourceNotFoundException;
+import com.example.demo.entity.RiskScoreEntity;
+import com.example.demo.entity.VisitorEntity;
+import com.example.demo.exception.ResourceNotFoundException;
 import com.example.demo.repository.RiskScoreRepository;
 import com.example.demo.repository.VisitorRepository;
 import com.example.demo.service.RiskScoreService;
