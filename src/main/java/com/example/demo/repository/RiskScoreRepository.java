@@ -5,7 +5,7 @@ import com.example.demo.entity.RiskScoreEntity;
 
 import java.util.Optional;
 
-public interface RiskScoreRepository extends JpaRepository<RiskScore, Long> {
+public interface RiskScoreRepository extends JpaRepository<RiskScoreEntity, Long> {
 
     Optional<RiskScore> findByVisitorId(Long visitorId);
 }

@@ -5,7 +5,7 @@ import com.example.demo.entity.RiskRuleEntity;
 
 import java.util.Optional;
 
-public interface RiskRuleRepository extends JpaRepository<RiskRule, Long> {
+public interface RiskRuleRepository extends JpaRepository<RiskRuleEntity, Long> {
 
     Optional<RiskRule> findByRuleName(String ruleName);
 }

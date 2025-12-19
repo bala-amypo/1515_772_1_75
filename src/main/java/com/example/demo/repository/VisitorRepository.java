@@ -3,5 +3,5 @@ package com.example.demo.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import com.example.demo.entity.VisitorEntity;
 
-public interface VisitorRepository extends JpaRepository<Visitor, Long> {
+public interface VisitorRepository extends JpaRepository<VisitorEntity, Long> {
 }
