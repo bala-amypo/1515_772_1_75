@@ -10,5 +10,5 @@ public interface RiskScoreService {
 
     RiskScoreEntity getScoreForVisitor(Long visitorId);
 
-    List<RiskScore> getAllScores();
+    List<RiskScoreEntity> getAllScores();
 }

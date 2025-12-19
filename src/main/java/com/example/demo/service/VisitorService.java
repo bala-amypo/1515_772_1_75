@@ -5,9 +5,9 @@ import java.util.List;
 
 public interface VisitorService {
 
-    Visitor createVisitor(Visitor visitor);
+    VisitorEntity createVisitor(VisitorEntity visitor);
 
-    Visitor getVisitor(Long id);
+    VisitorEntity getVisitor(Long id);
 
-    List<Visitor> getAllVisitors();
+    List<VisitorEntity> getAllVisitors();
 }
