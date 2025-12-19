@@ -21,7 +21,7 @@ public class VisitorController {
 
     // POST /api/visitors
     @PostMapping
-    public ResponseEntity<Visitor> createVisitor(@RequestBody Visitor visitor) {
+    public ResponseEntity<VisitorEntity> createVisitor(@RequestBody VisitorEntity visitor) {
         return new ResponseEntity<>(
                 visitorService.createVisitor(visitor),
                 HttpStatus.CREATED
@@ -30,13 +30,13 @@ public class VisitorController {
 
     // GET /api/visitors
     @GetMapping
-    public ResponseEntity<List<Visitor>> getAllVisitors() {
+    public ResponseEntity<List<VisitorEntity>> getAllVisitors() {
         return ResponseEntity.ok(visitorService.getAllVisitors());
     }
 
     // GET /api/visitors/{id}
     @GetMapping("/{id}")
-    public ResponseEntity<Visitor> getVisitor(@PathVariable Long id) {
+    public ResponseEntity<VisitorEntity> getVisitor(@PathVariable Long id) {
         return ResponseEntity.ok(visitorService.getVisitor(id));
     }
 }

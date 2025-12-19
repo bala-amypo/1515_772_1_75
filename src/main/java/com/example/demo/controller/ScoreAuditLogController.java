@@ -47,7 +47,7 @@ public class ScoreAuditLogController {
     @GetMapping("/{id}")
     public ResponseEntity<ScoreAuditLogEntity> getLogById(@PathVariable Long id) {
 
-        ScoreAuditLog log = scoreAuditLogService.getLog(id);
+        ScoreAuditLogEntity log = scoreAuditLogService.getLog(id);
 
         return ResponseEntity.ok(log);
     }
