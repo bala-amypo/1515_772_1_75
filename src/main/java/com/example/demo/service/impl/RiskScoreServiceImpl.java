@@ -45,13 +45,13 @@ public class RiskScoreServiceImpl implements RiskScoreService {
     }
 
     @Override
-    public RiskScore getScoreForVisitor(Long visitorId) {
+    public RiskScoreEntity getScoreForVisitor(Long visitorId) {
         return riskScoreRepository.findByVisitorId(visitorId)
                 .orElseThrow(() -> new ResourceNotFoundException("RiskScore not found"));
     }
 
     @Override
-    public List<RiskScore> getAllScores() {
+    public List<RiskScoreEntity> getAllScores() {
         return riskScoreRepository.findAll();
     }
 }

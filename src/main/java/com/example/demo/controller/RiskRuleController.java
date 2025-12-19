@@ -21,7 +21,7 @@ public class RiskRuleController {
 
     // POST /api/risk-rules
     @PostMapping
-    public ResponseEntity<RiskRule> createRule(@RequestBody RiskRule rule) {
+    public ResponseEntity<RiskRuleEntity> createRule(@RequestBody RiskRuleEntity rule) {
         return new ResponseEntity<>(riskRuleService.createRule(rule), HttpStatus.CREATED);
     }
 
