@@ -32,7 +32,7 @@ public class UserServiceImpl implements UserService {
         UserEntity user = new UserEntity();
         user.setEmail(request.getEmail());
        user.setPassword(request.getPassword());
-        user.setRoles(Set.of("USER"));
+        
 
         return userRepository.save(user);
     }
