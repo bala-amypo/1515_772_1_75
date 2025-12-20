@@ -1,6 +1,6 @@
 package com.example.demo.service;
 
-import com.example.demo.entity.ScoreAuditLogEntity;
+import com.example.demo.model.ScoreAuditLogEntity;
 import java.util.List;
 
 public interface ScoreAuditLogService {

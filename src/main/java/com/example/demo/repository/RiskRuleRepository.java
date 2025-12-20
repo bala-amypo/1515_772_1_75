@@ -1,7 +1,7 @@
 package com.example.demo.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import com.example.demo.entity.RiskRuleEntity;
+import com.example.demo.model.RiskRuleEntity;
 
 import java.util.Optional;
 

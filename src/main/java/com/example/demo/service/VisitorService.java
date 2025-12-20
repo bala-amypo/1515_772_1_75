@@ -1,6 +1,6 @@
 package com.example.demo.service;
 
-import com.example.demo.entity.VisitorEntity;
+import com.example.demo.model.VisitorEntity;
 import java.util.List;
 
 public interface VisitorService {

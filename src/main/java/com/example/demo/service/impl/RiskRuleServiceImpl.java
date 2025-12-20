@@ -1,6 +1,6 @@
 package com.example.demo.service.impl;
 
-import com.example.demo.entity.RiskRuleEntity;
+import com.example.demo.model.RiskRuleEntity;
 import com.example.demo.exception.ResourceNotFoundException;
 import com.example.demo.repository.RiskRuleRepository;
 import com.example.demo.service.RiskRuleService;

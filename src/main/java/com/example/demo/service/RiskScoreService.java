@@ -1,6 +1,6 @@
 package com.example.demo.service;
 
-import com.example.demo.entity.RiskScoreEntity;
+import com.example.demo.model.RiskScoreEntity;
 
 import java.util.List;
 

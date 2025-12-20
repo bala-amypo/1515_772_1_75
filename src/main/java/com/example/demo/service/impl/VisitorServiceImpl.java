@@ -1,6 +1,6 @@
 package com.example.demo.service.impl;
 
-import com.example.demo.entity.VisitorEntity;
+import com.example.demo.model.VisitorEntity;
 import com.example.demo.exception.ResourceNotFoundException;
 import com.example.demo.service.VisitorService;
 import com.example.demo.repository.VisitorRepository;

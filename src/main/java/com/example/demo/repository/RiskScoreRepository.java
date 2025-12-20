@@ -1,7 +1,7 @@
 package com.example.demo.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import com.example.demo.entity.RiskScoreEntity;
+import com.example.demo.model.RiskScoreEntity;
 
 import java.util.Optional;
 
