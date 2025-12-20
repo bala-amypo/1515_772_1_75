@@ -1,6 +1,6 @@
 package com.example.demo.controller;
 
-import com.example.demo.entity.RiskRuleEntity;
+import com.example.demo.model.RiskRuleEntity;
 import com.example.demo.service.RiskRuleService;
 
 import org.springframework.http.HttpStatus;

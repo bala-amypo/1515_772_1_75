@@ -1,6 +1,6 @@
 package com.example.demo.controller;
 
-import com.example.demo.entity.VisitLogEntity;
+import com.example.demo.model.VisitLogEntity;
 import com.example.demo.service.VisitLogService;
 
 import org.springframework.http.HttpStatus;
