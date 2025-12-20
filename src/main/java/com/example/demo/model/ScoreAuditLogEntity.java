@@ -1,10 +1,10 @@
-package com.example.demo.entity;
+package com.example.demo.model;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.PositiveOrZero;
-import com.example.demo.entity.VisitorEntity;
-import com.example.demo.entity.RiskRuleEntity;
+import com.example.demo.model.VisitorEntity;
+import com.example.demo.model.RiskRuleEntity;
 import java.time.LocalDateTime;
 
 @Entity
