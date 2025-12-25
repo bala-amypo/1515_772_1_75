@@ -29,6 +29,11 @@ public class JwtTokenProvider {
                 .signWith(key, SignatureAlgorithm.HS256)
                 .compact();
     }
+    // ✅ REQUIRED BY TEST
+public String createToken(Long userId, String email, Set<String> roles) {
+    return generateToken(email, roles);
+}
+
 
     // ✅ REQUIRED BY TESTS
     public Claims getClaims(String token) {

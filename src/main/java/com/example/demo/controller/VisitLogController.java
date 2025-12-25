@@ -23,7 +23,9 @@ public class VisitLogController {
     public ResponseEntity<VisitLog> create(
             @PathVariable Long visitorId,
             @RequestBody VisitLog log) {
-        return ResponseEntity.ok(visitLogService.createVisitLog(visitorId, log));
+        return ResponseEntity.ok(
+                visitLogService.createVisitLog(visitorId, log)
+        );
     }
 
     @GetMapping("/{id}")
@@ -31,8 +33,11 @@ public class VisitLogController {
         return ResponseEntity.ok(visitLogService.getLog(id));
     }
 
+    // ✅ REQUIRED NAME BY TEST
     @GetMapping("/visitor/{visitorId}")
-    public ResponseEntity<List<VisitLog>> getByVisitor(@PathVariable Long visitorId) {
-        return ResponseEntity.ok(visitLogService.getLogsByVisitor(visitorId));
+    public ResponseEntity<List<VisitLog>> listByVisitor(@PathVariable Long visitorId) {
+        return ResponseEntity.ok(
+                visitLogService.getLogsByVisitor(visitorId)
+        );
     }
 }

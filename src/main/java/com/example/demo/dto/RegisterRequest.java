@@ -1,35 +1,34 @@
 package com.example.demo.dto;
 
+import java.util.Set;
+
 public class RegisterRequest {
 
     private String email;
     private String password;
+    private Set<String> roles;
 
-    // ✅ Mandatory no-args constructor
-    public RegisterRequest() {
-    }
-
-    // Optional all-args constructor
-    public RegisterRequest(String email, String password) {
-        this.email = email;
-        this.password = password;
-    }
-
-    // Getters
     public String getEmail() {
         return email;
+    }
+
+    public void setEmail(String email) {   // ✅ REQUIRED
+        this.email = email;
     }
 
     public String getPassword() {
         return password;
     }
 
-    // ✅ Setters REQUIRED for tests & JSON binding
-    public void setEmail(String email) {
-        this.email = email;
+    public void setPassword(String password) {  // ✅ REQUIRED
+        this.password = password;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public Set<String> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<String> roles) {  // ✅ REQUIRED BY TEST
+        this.roles = roles;
     }
 }
