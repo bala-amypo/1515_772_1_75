@@ -15,6 +15,7 @@ public class VisitorController {
 
     private final VisitorService visitorService;
 
+    // Constructor injection (MANDATORY for tests)
     public VisitorController(VisitorService visitorService) {
         this.visitorService = visitorService;
     }
@@ -29,8 +30,9 @@ public class VisitorController {
         return ResponseEntity.ok(visitorService.getVisitor(id));
     }
 
+    // 🔑 IMPORTANT: method name must be "all()" for tests
     @GetMapping
-    public ResponseEntity<List<Visitor>> getAll() {
+    public ResponseEntity<List<Visitor>> all() {
         return ResponseEntity.ok(visitorService.getAllVisitors());
     }
 }

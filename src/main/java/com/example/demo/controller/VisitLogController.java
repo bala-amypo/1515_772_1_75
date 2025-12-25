@@ -36,3 +36,4 @@ public class VisitLogController {
         return ResponseEntity.ok(visitLogService.getLogsByVisitor(visitorId));
     }
 }
+`
