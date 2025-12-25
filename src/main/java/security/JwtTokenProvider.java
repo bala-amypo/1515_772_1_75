@@ -11,9 +11,14 @@ import java.util.Set;
 @Component
 public class JwtTokenProvider {
 
-    private final Key key = Keys.secretKeyFor(SignatureAlgorithm.HS256);
+    // ✅ FIXED secret key (important for tests)
+    private static final String SECRET =
+            "my-secret-key-my-secret-key-my-secret-key"; // 32+ chars
+
+    private final Key key = Keys.hmacShaKeyFor(SECRET.getBytes());
     private final long expiryMs = 1000 * 60 * 60; // 1 hour
 
+    // Generate JWT
     public String generateToken(String email, Set<String> roles) {
 
         return Jwts.builder()
@@ -21,11 +26,11 @@ public class JwtTokenProvider {
                 .claim("roles", roles)
                 .setIssuedAt(new Date())
                 .setExpiration(new Date(System.currentTimeMillis() + expiryMs))
-                .signWith(key)
+                .signWith(key, SignatureAlgorithm.HS256)
                 .compact();
     }
 
-    // ⚠️ TESTS REQUIRE THIS METHOD
+    // ✅ REQUIRED BY TESTS
     public Claims getClaims(String token) {
         return Jwts.parserBuilder()
                 .setSigningKey(key)
@@ -34,6 +39,7 @@ public class JwtTokenProvider {
                 .getBody();
     }
 
+    // Validate JWT safely
     public boolean validateToken(String token) {
         try {
             getClaims(token);
