@@ -15,6 +15,7 @@ public class ScoreAuditLogController {
 
     private final ScoreAuditLogService scoreAuditLogService;
 
+    // Constructor injection (MANDATORY for tests)
     public ScoreAuditLogController(ScoreAuditLogService scoreAuditLogService) {
         this.scoreAuditLogService = scoreAuditLogService;
     }
@@ -24,6 +25,7 @@ public class ScoreAuditLogController {
             @PathVariable Long visitorId,
             @PathVariable Long ruleId,
             @RequestBody ScoreAuditLog log) {
+
         return ResponseEntity.ok(
                 scoreAuditLogService.logScoreChange(visitorId, ruleId, log)
         );
@@ -34,8 +36,13 @@ public class ScoreAuditLogController {
         return ResponseEntity.ok(scoreAuditLogService.getLog(id));
     }
 
+    // 🔑 IMPORTANT: tests expect method name "logsByVisitor"
     @GetMapping("/visitor/{visitorId}")
-    public ResponseEntity<List<ScoreAuditLog>> getByVisitor(@PathVariable Long visitorId) {
-        return ResponseEntity.ok(scoreAuditLogService.getLogsByVisitor(visitorId));
+    public ResponseEntity<List<ScoreAuditLog>> logsByVisitor(
+            @PathVariable Long visitorId) {
+
+        return ResponseEntity.ok(
+                scoreAuditLogService.getLogsByVisitor(visitorId)
+        );
     }
 }

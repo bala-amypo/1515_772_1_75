@@ -15,6 +15,7 @@ public class RiskScoreController {
 
     private final RiskScoreService riskScoreService;
 
+    // Constructor injection (MANDATORY for tests)
     public RiskScoreController(RiskScoreService riskScoreService) {
         this.riskScoreService = riskScoreService;
     }
@@ -29,8 +30,9 @@ public class RiskScoreController {
         return ResponseEntity.ok(riskScoreService.getScoreForVisitor(visitorId));
     }
 
+    // 🔑 IMPORTANT: tests expect method name "all()"
     @GetMapping
-    public ResponseEntity<List<RiskScore>> getAll() {
+    public ResponseEntity<List<RiskScore>> all() {
         return ResponseEntity.ok(riskScoreService.getAllScores());
     }
 }

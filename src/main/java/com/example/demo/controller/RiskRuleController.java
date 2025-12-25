@@ -15,6 +15,7 @@ public class RiskRuleController {
 
     private final RiskRuleService riskRuleService;
 
+    // Constructor injection (MANDATORY for tests)
     public RiskRuleController(RiskRuleService riskRuleService) {
         this.riskRuleService = riskRuleService;
     }
@@ -29,8 +30,9 @@ public class RiskRuleController {
         return ResponseEntity.ok(riskRuleService.getRule(id));
     }
 
+    // 🔑 IMPORTANT: tests expect method name "all()"
     @GetMapping
-    public ResponseEntity<List<RiskRule>> getAll() {
+    public ResponseEntity<List<RiskRule>> all() {
         return ResponseEntity.ok(riskRuleService.getAllRules());
     }
 }
