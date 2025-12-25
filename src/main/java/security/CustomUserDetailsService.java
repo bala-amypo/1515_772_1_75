@@ -1,6 +1,6 @@
 package com.example.demo.security;
 
-import com.example.demo.entity.UserEntity;
+import com.example.demo.model.UserEntity;
 import com.example.demo.repository.UserRepository;
 
 import org.springframework.security.core.userdetails.UserDetails;
