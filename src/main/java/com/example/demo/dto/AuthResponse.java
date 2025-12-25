@@ -8,18 +8,23 @@ public class AuthResponse {
     private String email;
     private Set<String> roles;
 
-    // Constructor used in UserServiceImpl
+    // ✅ Mandatory no-args constructor (Jackson + tests)
+    public AuthResponse() {
+    }
+
+    // ✅ Used in UserServiceImpl
     public AuthResponse(String token, String email, Set<String> roles) {
         this.token = token;
         this.email = email;
         this.roles = roles;
     }
 
-    // Optional: keep single-arg constructor if needed
+    // Optional single-arg constructor
     public AuthResponse(String token) {
         this.token = token;
     }
 
+    // Getters
     public String getToken() {
         return token;
     }
@@ -30,5 +35,18 @@ public class AuthResponse {
 
     public Set<String> getRoles() {
         return roles;
+    }
+
+    // ✅ Setters REQUIRED for tests
+    public void setToken(String token) {
+        this.token = token;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setRoles(Set<String> roles) {
+        this.roles = roles;
     }
 }
