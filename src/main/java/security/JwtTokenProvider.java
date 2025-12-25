@@ -6,33 +6,29 @@ import org.springframework.stereotype.Component;
 
 import java.security.Key;
 import java.util.Date;
-import java.util.List;
+import java.util.Set;
 
 @Component
 public class JwtTokenProvider {
 
-    private static final String SECRET_KEY = "mysecretkeymysecretkeymysecretkey123";
-    private static final long EXPIRATION_TIME = 1000 * 60 * 60; // 1 hour
+    private final Key key = Keys.secretKeyFor(SignatureAlgorithm.HS256);
+    private final long expiryMs = 1000 * 60 * 60; // 1 hour
 
-    private Key getSigningKey() {
-        return Keys.hmacShaKeyFor(SECRET_KEY.getBytes());
-    }
+    public String generateToken(String email, Set<String> roles) {
 
-    // Generate JWT token
-    public String generateToken(String email, List<String> roles) {
         return Jwts.builder()
                 .setSubject(email)
                 .claim("roles", roles)
                 .setIssuedAt(new Date())
-                .setExpiration(new Date(System.currentTimeMillis() + EXPIRATION_TIME))
-                .signWith(getSigningKey(), SignatureAlgorithm.HS256)
+                .setExpiration(new Date(System.currentTimeMillis() + expiryMs))
+                .signWith(key)
                 .compact();
     }
 
-    // ✅ Tests expect this method
+    // ⚠️ TESTS REQUIRE THIS METHOD
     public Claims getClaims(String token) {
         return Jwts.parserBuilder()
-                .setSigningKey(getSigningKey())
+                .setSigningKey(key)
                 .build()
                 .parseClaimsJws(token)
                 .getBody();
@@ -45,9 +41,5 @@ public class JwtTokenProvider {
         } catch (JwtException | IllegalArgumentException e) {
             return false;
         }
-    }
-
-    public String getEmailFromToken(String token) {
-        return getClaims(token).getSubject();
     }
 }

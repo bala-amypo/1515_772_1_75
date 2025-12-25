@@ -2,10 +2,8 @@ package com.example.demo.util;
 
 public class RiskLevelUtils {
 
-    private RiskLevelUtils() {
-    }
-
     public static String determineRiskLevel(int score) {
+
         if (score < 0) {
             score = 0;
         }
