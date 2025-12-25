@@ -1,11 +1,11 @@
 package com.example.demo.repository;
 
+import com.example.demo.model.RiskRule;
 import org.springframework.data.jpa.repository.JpaRepository;
-import com.example.demo.model.RiskRuleEntity;
 
 import java.util.Optional;
 
-public interface RiskRuleRepository extends JpaRepository<RiskRuleEntity, Long> {
+public interface RiskRuleRepository extends JpaRepository<RiskRule, Long> {
 
-    Optional<RiskRuleEntity> findByRuleName(String ruleName);
+    Optional<RiskRule> findByRuleName(String ruleName);
 }
