@@ -1,7 +1,6 @@
 package com.example.demo.model;
 
 import jakarta.persistence.*;
-import com.example.demo.model.VisitorEntity;
 import jakarta.validation.constraints.PositiveOrZero;
 
 import java.time.LocalDateTime;
@@ -35,13 +34,8 @@ public class RiskScoreEntity {
 
     public RiskScoreEntity() {}
 
-    public RiskScoreEntity(VisitorEntity visitor, Integer totalScore, String riskLevel) {
-        this.visitor = visitor;
-        this.totalScore = totalScore;
-        this.riskLevel = riskLevel;
-    }
+    // ===== GETTERS & SETTERS =====
 
-    // Getters and Setters
     public Long getId() {
         return id;
     }
@@ -72,5 +66,10 @@ public class RiskScoreEntity {
 
     public LocalDateTime getEvaluatedAt() {
         return evaluatedAt;
+    }
+
+    // 🔴 THIS SETTER WAS MISSING – NOW FIXED
+    public void setEvaluatedAt(LocalDateTime evaluatedAt) {
+        this.evaluatedAt = evaluatedAt;
     }
 }
