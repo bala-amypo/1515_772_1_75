@@ -1,17 +1,15 @@
 package com.example.demo.service.impl;
 
-import com.example.demo.model.VisitLogEntity;
-import com.example.demo.model.VisitorEntity;
+import com.example.demo.exception.BadRequestException;
 import com.example.demo.exception.ResourceNotFoundException;
+import com.example.demo.model.VisitLog;
+import com.example.demo.model.Visitor;
 import com.example.demo.repository.VisitLogRepository;
 import com.example.demo.repository.VisitorRepository;
 import com.example.demo.service.VisitLogService;
 
-import org.springframework.stereotype.Service;
-
 import java.util.List;
 
-@Service
 public class VisitLogServiceImpl implements VisitLogService {
 
     private final VisitLogRepository visitLogRepository;
@@ -24,24 +22,36 @@ public class VisitLogServiceImpl implements VisitLogService {
     }
 
     @Override
-    public VisitLogEntity createVisitLog(Long visitorId, VisitLogEntity log) {
+    public VisitLog createVisitLog(Long visitorId, VisitLog log) {
 
-        VisitorEntity visitor = visitorRepository.findById(visitorId)
+        Visitor visitor = visitorRepository.findById(visitorId)
                 .orElseThrow(() -> new ResourceNotFoundException("Visitor not found"));
 
-        log.setVisitor(visitor);
+        if (log.getPurpose() == null || log.getPurpose().isBlank()
+                || log.getLocation() == null || log.getLocation().isBlank()) {
+            throw new BadRequestException("purpose and location required");
+        }
 
+        if (log.getExitTime() != null &&
+                !log.getExitTime().isAfter(log.getEntryTime())) {
+            throw new BadRequestException("exitTime must be after entryTime");
+        }
+
+        log.setVisitor(visitor);
         return visitLogRepository.save(log);
     }
 
     @Override
-    public VisitLogEntity getLog(Long id) {
+    public VisitLog getLog(Long id) {
         return visitLogRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("VisitLog not found"));
     }
 
     @Override
-    public List<VisitLogEntity> getLogsByVisitor(Long visitorId) {
-        return visitLogRepository.findByVisitorId(visitorId);
+    public List<VisitLog> getLogsByVisitor(Long visitorId) {
+        return visitLogRepository.findAll()
+                .stream()
+                .filter(v -> v.getVisitor().getId().equals(visitorId))
+                .toList();
     }
 }
