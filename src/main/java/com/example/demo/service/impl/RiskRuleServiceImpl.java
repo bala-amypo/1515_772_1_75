@@ -7,7 +7,9 @@ import com.example.demo.repository.RiskRuleRepository;
 import com.example.demo.service.RiskRuleService;
 
 import java.util.List;
+import org.springframework.stereotype.Service;
 
+@Service  
 public class RiskRuleServiceImpl implements RiskRuleService {
 
     private final RiskRuleRepository riskRuleRepository;

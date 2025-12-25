@@ -11,7 +11,9 @@ import com.example.demo.repository.VisitorRepository;
 import com.example.demo.service.ScoreAuditLogService;
 
 import java.util.List;
+import org.springframework.stereotype.Service;
 
+@Service  
 public class ScoreAuditLogServiceImpl implements ScoreAuditLogService {
 
     private final ScoreAuditLogRepository auditLogRepository;

@@ -10,7 +10,9 @@ import com.example.demo.util.RiskLevelUtils;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import org.springframework.stereotype.Service;
 
+@Service  
 public class RiskScoreServiceImpl implements RiskScoreService {
 
     private final RiskScoreRepository riskScoreRepository;

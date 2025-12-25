@@ -9,7 +9,9 @@ import com.example.demo.repository.VisitorRepository;
 import com.example.demo.service.VisitLogService;
 
 import java.util.List;
+import org.springframework.stereotype.Service;
 
+@Service  
 public class VisitLogServiceImpl implements VisitLogService {
 
     private final VisitLogRepository visitLogRepository;

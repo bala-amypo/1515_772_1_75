@@ -7,7 +7,9 @@ import com.example.demo.repository.VisitorRepository;
 import com.example.demo.service.VisitorService;
 
 import java.util.List;
+import org.springframework.stereotype.Service;
 
+@Service  
 public class VisitorServiceImpl implements VisitorService {
 
     private final VisitorRepository visitorRepository;
