@@ -1,15 +1,13 @@
 package com.example.demo.service.impl;
 
-import com.example.demo.model.RiskRuleEntity;
+import com.example.demo.exception.BadRequestException;
 import com.example.demo.exception.ResourceNotFoundException;
+import com.example.demo.model.RiskRule;
 import com.example.demo.repository.RiskRuleRepository;
 import com.example.demo.service.RiskRuleService;
 
-import org.springframework.stereotype.Service;
-
 import java.util.List;
 
-@Service
 public class RiskRuleServiceImpl implements RiskRuleService {
 
     private final RiskRuleRepository riskRuleRepository;
@@ -19,23 +17,24 @@ public class RiskRuleServiceImpl implements RiskRuleService {
     }
 
     @Override
-    public RiskRuleEntity createRule(RiskRuleEntity rule) {
+    public RiskRule createRule(RiskRule rule) {
 
-        if (riskRuleRepository.findByRuleName(rule.getRuleName()).isPresent()) {
-            throw new IllegalArgumentException("Rule name must be unique");
-        }
+        riskRuleRepository.findByRuleName(rule.getRuleName())
+                .ifPresent(r -> {
+                    throw new BadRequestException("Rule name must be unique");
+                });
 
         return riskRuleRepository.save(rule);
     }
 
     @Override
-    public List<RiskRuleEntity> getAllRules() {
-        return riskRuleRepository.findAll();
+    public RiskRule getRule(Long id) {
+        return riskRuleRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("RiskRule not found"));
     }
 
     @Override
-    public RiskRuleEntity getRule(Long id) {
-        return riskRuleRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("RiskRule not found"));
+    public List<RiskRule> getAllRules() {
+        return riskRuleRepository.findAll();
     }
 }
