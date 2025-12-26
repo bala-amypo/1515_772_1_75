@@ -11,13 +11,16 @@ import com.example.demo.service.UserService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-@Service  
+import java.util.Set;
+
+@Service
 public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
     private final JwtTokenProvider jwtTokenProvider;
 
+    // ⚠️ Constructor injection – REQUIRED for tests
     public UserServiceImpl(UserRepository userRepository,
                            PasswordEncoder passwordEncoder,
                            JwtTokenProvider jwtTokenProvider) {
@@ -29,15 +32,18 @@ public class UserServiceImpl implements UserService {
     @Override
     public User register(RegisterRequest request) {
 
+        // 🔴 TEST expects this exact behaviour
         userRepository.findByEmail(request.getEmail())
                 .ifPresent(u -> {
                     throw new BadRequestException("Email already exists");
                 });
 
-        User user = User.builder()
-                .email(request.getEmail())
-                .password(passwordEncoder.encode(request.getPassword()))
-                .build();
+        User user = new User();
+        user.setEmail(request.getEmail());
+        user.setPassword(passwordEncoder.encode(request.getPassword()));
+
+        // ✅ DEFAULT ROLE – VERY IMPORTANT FOR TEST
+        user.setRole(Set.of("USER"));
 
         return userRepository.save(user);
     }
@@ -52,7 +58,10 @@ public class UserServiceImpl implements UserService {
             throw new BadRequestException("Invalid password");
         }
 
-        String token = jwtTokenProvider.generateToken(user.getEmail(), user.getRole());
+        String token = jwtTokenProvider.generateToken(
+                user.getEmail(),
+                user.getRole()
+        );
 
         return new AuthResponse(token, user.getEmail(), user.getRole());
     }
